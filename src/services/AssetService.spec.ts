@@ -8,7 +8,7 @@ const muta = new Muta();
 
 const client = muta.client();
 const account = Muta.accountFromPrivateKey(
-  '0x2b672bb959fa7a852d7259b129b65aee9c83b39f427d6f7bded1f58c4c9310c2'
+  '0x2b672bb959fa7a852d7259b129b65aee9c83b39f427d6f7bded1f58c4c9310c2',
 );
 
 test('AssetService with binding', async t => {
@@ -20,7 +20,7 @@ test('AssetService with binding', async t => {
     name: Math.random().toString(),
     precision: 0,
     supply,
-    symbol: Math.random().toString()
+    symbol: Math.random().toString(),
   });
 
   const createdAsset = receipt.response.ret;
@@ -29,10 +29,10 @@ test('AssetService with binding', async t => {
   const assetId = createdAsset.id;
 
   const {
-    ret: { balance }
+    ret: { balance },
   } = await service.get_balance({
     asset_id: assetId,
-    user: createdAsset.issuer
+    user: createdAsset.issuer,
   });
   t.true(supply.isEqualTo(balance));
 
@@ -41,14 +41,14 @@ test('AssetService with binding', async t => {
   await service.transfer({
     asset_id: assetId,
     to,
-    value: 500
+    value: 500,
   });
 
   const {
-    ret: { balance: balance2 }
+    ret: { balance: balance2 },
   } = await service.get_balance({
     asset_id: assetId,
-    user: to
+    user: to,
   });
   t.is(balance2, 500);
 });

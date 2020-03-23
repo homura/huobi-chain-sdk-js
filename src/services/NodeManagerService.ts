@@ -3,14 +3,14 @@ import {
   Read,
   read,
   Write,
-  write
+  write,
 } from 'muta-sdk/build/main/service';
 import {
   Address,
   Bytes,
   u32,
   u64,
-  Vec
+  Vec,
 } from 'muta-sdk/build/main/types/scalar';
 
 interface ValidatorExtend {
@@ -68,6 +68,6 @@ export const NodeManagerService = createBindingClass<NodeManagerServiceModel>(
     update_metadata: write(),
     update_validators: write(),
     update_interval: write(),
-    update_ratio: write()
-  }
+    update_ratio: write(),
+  },
 );

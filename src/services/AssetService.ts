@@ -3,7 +3,7 @@ import {
   Read,
   createBindingClass,
   write,
-  read
+  read,
 } from 'muta-sdk/build/main/service';
 import { Address, Hash, u64 } from 'muta-sdk/build/main/types/scalar';
 
@@ -88,5 +88,5 @@ export const AssetService = createBindingClass<AssetServiceModel>('asset', {
   get_balance: read(),
   get_native_asset: read(),
   transfer: write(),
-  transfer_from: write()
+  transfer_from: write(),
 });

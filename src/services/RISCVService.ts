@@ -3,7 +3,7 @@ import { Address, Hash, Vec } from 'muta-sdk/build/main/types/scalar';
 
 enum InterpreterType {
   Binary = 1,
-  Duktape = 2
+  Duktape = 2,
 }
 
 interface DeployPayload {
@@ -56,5 +56,5 @@ export const RISCVService = createBindingClass<RISCVServiceModel>('riscv', {
   revoke_deploy_auth: write(),
   check_deploy_auth: read(),
   deploy: write(),
-  get_contract: read()
+  get_contract: read(),
 });
