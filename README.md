@@ -4,6 +4,13 @@ Huobi Chain JavaScript SDK. The SDK is a binding for [Huobi Chain Services](http
 base on [muta-sdk](https://github.com/nervosnetwork/muta-sdk-js). It is recommended to code with an IDE that supports TypeScript such as VSCode or WebStorm, 
 there will be corresponding code completion
 
+## Install
+
+```
+npm install muta-sdk
+npm install huobi-chain-sdk
+```
+
 ## Example
 
 ```typescript
