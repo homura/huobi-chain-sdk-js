@@ -14,7 +14,8 @@ npm install huobi-chain-sdk
 ## Example
 
 ```typescript
-import { Muta, AssetService, BigNumber, utils } from 'huobi-chain-sdk';
+import { Muta, BigNumber, utils } from 'muta-sdk';
+import { AssetService } from 'huobi-chain-sdk';
 
 const muta = new Muta();
 
