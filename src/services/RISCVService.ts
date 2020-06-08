@@ -1,5 +1,5 @@
-import { createBindingClass, read, Read, write, Write } from 'muta-sdk';
-import { Address, Hash, Vec } from 'muta-sdk/build/main/types/scalar';
+import { createBindingClass, read, Read, write, Write } from '@mutajs/service';
+import { Address, Hash, Vec } from '@mutajs/types';
 
 enum InterpreterType {
   Binary = 1,

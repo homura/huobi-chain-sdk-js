@@ -1,5 +1,6 @@
 import test from 'ava';
-import { BigNumber, Muta, utils } from 'muta-sdk';
+import { Muta, utils } from 'muta-sdk';
+import { BigNumber } from '@mutajs/shared';
 import { AssetService } from './AssetService';
 
 const toHex = utils.toHex;
@@ -23,13 +24,13 @@ test('AssetService with binding', async t => {
     symbol: Math.random().toString(),
   });
 
-  const createdAsset = receipt.response.ret;
+  const createdAsset = receipt.response.response.succeedData;
 
   t.is(toHex(createdAsset.issuer), toHex(account.address));
   const assetId = createdAsset.id;
 
   const {
-    ret: { balance },
+    succeedData: { balance },
   } = await service.get_balance({
     asset_id: assetId,
     user: createdAsset.issuer,
@@ -45,7 +46,7 @@ test('AssetService with binding', async t => {
   });
 
   const {
-    ret: { balance: balance2 },
+    succeedData: { balance: balance2 },
   } = await service.get_balance({
     asset_id: assetId,
     user: to,

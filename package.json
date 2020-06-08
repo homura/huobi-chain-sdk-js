@@ -44,10 +44,13 @@
     "prepare-release": "One-step: clean, build, test, publish docs, and prep a release"
   },
   "engines": {
-    "node": ">=8.9"
+    "node": ">=10"
   },
-  "peerDependencies": {
-    "muta-sdk": "0.9.2"
+  "dependencies": {
+    "@mutajs/service": "0.11.0-dev.1",
+    "@mutajs/shared": "^0.11.0-dev.1",
+    "@mutajs/types": "^0.11.0-dev.1",
+    "muta-sdk": "0.11.0-dev.1"
   },
   "devDependencies": {
     "@bitjson/npm-scripts-info": "^1.0.0",
@@ -55,7 +58,6 @@
     "ava": "^3.5.0",
     "codecov": "^3.5.0",
     "cz-conventional-changelog": "^2.1.0",
-    "muta-sdk": "0.9.2",
     "npm-run-all": "^4.1.5",
     "nyc": "^14.1.1",
     "open-cli": "^5.0.0",

@@ -1,11 +1,5 @@
-import {
-  Write,
-  Read,
-  createBindingClass,
-  write,
-  read,
-} from 'muta-sdk/build/main/service';
-import { Address, Hash, u64 } from 'muta-sdk/build/main/types/scalar';
+import { Write, Read, createBindingClass, write, read } from '@mutajs/service';
+import { Address, Hash, u64 } from '@mutajs/types';
 
 export interface GetBalancePayParam {
   asset_id: Hash;

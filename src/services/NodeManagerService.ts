@@ -1,17 +1,5 @@
-import {
-  createBindingClass,
-  Read,
-  read,
-  Write,
-  write,
-} from 'muta-sdk/build/main/service';
-import {
-  Address,
-  Bytes,
-  u32,
-  u64,
-  Vec,
-} from 'muta-sdk/build/main/types/scalar';
+import { createBindingClass, Read, read, Write, write } from '@mutajs/service';
+import { Address, Bytes, u32, u64, Vec } from '@mutajs/types';
 
 interface ValidatorExtend {
   bls_pub_key: Bytes;

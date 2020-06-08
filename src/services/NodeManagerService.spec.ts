@@ -13,5 +13,5 @@ test('test NodeManagerService', async t => {
   const service = new NodeManagerService(client, account);
   const res = await service.get_admin();
 
-  t.is(utils.toHex(res.ret), '0xcff1002107105460941f797828f468667aa1a2db');
+  t.is(utils.toHex(res.succeedData).startsWith('0x'), true);
 });

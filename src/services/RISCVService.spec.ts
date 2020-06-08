@@ -15,6 +15,6 @@ test('test RISCVService', async t => {
     addresses: ['0x0000000000000000000000000000000000000000'],
   });
 
-  t.is(res.isError, false);
-  t.deepEqual(res.ret, { addresses: [] });
+  t.is(Number(res.code) === 0, true);
+  t.deepEqual(res.succeedData, { addresses: [] });
 });
