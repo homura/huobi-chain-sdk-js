@@ -1,3 +1,5 @@
+export * from './AdmissionControlService';
 export * from './AssetService';
-export * from './NodeManagerService';
+export * from './GovernanceService';
+export * from './KycService';
 export * from './RISCVService';

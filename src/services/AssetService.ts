@@ -1,86 +1,98 @@
-import { Write, Read, createBindingClass, write, read } from '@mutajs/service';
-import { Address, Hash, u64 } from '@mutajs/types';
+import { createServiceBindingClass, read, write } from '@mutadev/service'
+import { Address, Hash, Hex, u64 } from '@mutadev/types';
 
-export interface GetBalancePayParam {
+interface GetBalancePayload {
   asset_id: Hash;
   user: Address;
 }
 
-export interface GetBalanceResponse {
+interface GetBalanceResponse {
   asset_id: string;
   balance: u64;
 }
 
-export interface TransferPayParam {
+interface TransferPayload {
   asset_id: Hash;
   to: Address;
   value: u64;
 }
 
-export interface CreateAssetPayload {
+interface CreateAssetPayload {
   name: string;
   symbol: string;
   supply: u64;
   precision: u64;
 }
 
-export interface Asset {
+interface Asset {
   id: Hash;
   name: string;
   symbol: string;
   supply: u64;
+  precision: u64;
   issuer: Address;
-  precision: u64;
 }
 
-export interface GetAssetPayload {
+interface GetAssetPayload {
   id: Hash;
 }
 
-export interface ApprovePayload {
-  asset_id: Hash;
-  to: Address;
-  value: u64;
-}
+type ApprovePayload = TransferPayload;
 
-export interface TransferFromPayload {
+interface TransferFromPayload {
   asset_id: Hash;
   sender: Address;
   recipient: Address;
   value: u64;
 }
 
-export interface GetAllowancePayload {
+interface GetAllowancePayload {
   asset_id: Hash;
   grantor: Address;
   grantee: Address;
 }
 
-export interface GetAllowanceResponse {
+interface GetAllowanceResponse {
   asset_id: Hash;
   grantor: Address;
   grantee: Address;
   value: u64;
 }
 
-export interface AssetServiceModel {
-  create_asset: Write<CreateAssetPayload, Asset>;
-  get_allowance: Read<GetAllowancePayload, GetAllowanceResponse>;
-  get_asset: Read<GetAssetPayload, Asset>;
-  get_native_asset: Read<undefined, Asset>;
-  get_balance: Read<GetBalancePayParam, GetBalanceResponse>;
-  transfer: Write<TransferPayParam, ''>;
-  approve: Write<ApprovePayload, ''>;
-  transfer_from: Write<TransferFromPayload, ''>;
+interface NewAdmin {
+  addr: Address;
 }
 
-export const AssetService = createBindingClass<AssetServiceModel>('asset', {
-  approve: write(),
-  create_asset: write(),
-  get_allowance: read(),
-  get_asset: read(),
-  get_balance: read(),
-  get_native_asset: read(),
-  transfer: write(),
-  transfer_from: write(),
+interface MintAsset {
+  asset_id: Hash,
+  to: Address,
+  amount: u64,
+  proof: Hex,
+  memo: string,
+}
+
+interface BurnAsset {
+  asset_id: Hash,
+  amount: u64,
+  proof: Hex,
+  memo: string,
+}
+
+export const AssetService = createServiceBindingClass({
+    serviceName: 'asset',
+    read: {
+        get_asset: read<GetAssetPayload, Asset>(),
+        get_native_asset: read<null, Asset>(),
+        get_allowance: read<GetAllowancePayload, GetAllowanceResponse>(),
+        get_balance: read<GetBalancePayload, GetBalanceResponse>(),
+    },
+    write: {
+        create_asset: write<CreateAssetPayload, Asset>(),
+        transfer: write<TransferPayload, null>(),
+        approve: write<ApprovePayload, null>(),
+        transfer_from: write<TransferFromPayload, null>(),
+        change_admin: write<NewAdmin, null>(),
+        mint: write<MintAsset, null>(),
+        burn: write<BurnAsset, null>(),
+    },
 });

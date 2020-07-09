@@ -1,5 +1,5 @@
-import { createBindingClass, read, Read, write, Write } from '@mutajs/service';
-import { Address, Hash, Vec } from '@mutajs/types';
+import { createServiceBindingClass, read, write } from '@mutadev/service'
+import { Address, Hash, Vec } from '@mutadev/types';
 
 enum InterpreterType {
   Binary = 1,
@@ -28,7 +28,7 @@ interface GetContractPayload {
   storage_keys: Vec<string>;
 }
 
-interface Addresses {
+interface AddressList {
   addresses: Vec<Address>;
 }
 
@@ -37,24 +37,22 @@ interface GetContractResp {
   intp_type: InterpreterType;
   code: string;
   storage_values: Vec<string>;
+  authorizer?: Address;
 }
 
-interface RISCVServiceModel {
-  call: Read<ExecPayload, string>;
-  exec: Write<ExecPayload, string>;
-  grant_deploy_auth: Write<Addresses>;
-  revoke_deploy_auth: Write<Addresses>;
-  check_deploy_auth: Read<Addresses, Addresses>;
-  deploy: Write<DeployPayload, DeployResp>;
-  get_contract: Read<GetContractPayload, GetContractResp>;
-}
-
-export const RISCVService = createBindingClass<RISCVServiceModel>('riscv', {
-  call: read(),
-  exec: write(),
-  grant_deploy_auth: write(),
-  revoke_deploy_auth: write(),
-  check_deploy_auth: read(),
-  deploy: write(),
-  get_contract: read(),
+export const RISCVService = createServiceBindingClass({
+    serviceName: 'riscv',
+    read: {
+        call: read<ExecPayload, string>(),
+        check_deploy_auth: read<AddressList, AddressList>(),
+        get_contract: read<GetContractPayload, GetContractResp>(),
+    },
+    write: {
+        exec: write<ExecPayload, string>(),
+        grant_deploy_auth: write<AddressList, null>(),
+        revoke_deploy_auth: write<AddressList, null>(),
+        deploy: write<DeployPayload, DeployResp>(),
+        approve_contracts: write<AddressList, null>(),
+        revoke_contracts: write<AddressList, null>(),
+    },
 });
