@@ -1,6 +1,5 @@
 import { Account } from '@mutadev/account';
 import { Client } from '@mutadev/client';
-import { BigNumber } from '@mutadev/shared';
 import { MetadataService } from './MetadataService';
 
 const account = Account.fromPrivateKey(

@@ -1,4 +1,4 @@
-import { createServiceBindingClass, read, write } from '@mutadev/service'
+import { createServiceBindingClass, read, write } from '@mutadev/service';
 import { Address, Hash, Vec } from '@mutadev/types';
 
 enum InterpreterType {
@@ -41,18 +41,18 @@ interface GetContractResp {
 }
 
 export const RISCVService = createServiceBindingClass({
-    serviceName: 'riscv',
-    read: {
-        call: read<ExecPayload, string>(),
-        check_deploy_auth: read<AddressList, AddressList>(),
-        get_contract: read<GetContractPayload, GetContractResp>(),
-    },
-    write: {
-        exec: write<ExecPayload, string>(),
-        grant_deploy_auth: write<AddressList, null>(),
-        revoke_deploy_auth: write<AddressList, null>(),
-        deploy: write<DeployPayload, DeployResp>(),
-        approve_contracts: write<AddressList, null>(),
-        revoke_contracts: write<AddressList, null>(),
-    },
+  serviceName: 'riscv',
+  read: {
+    call: read<ExecPayload, string>(),
+    check_deploy_auth: read<AddressList, AddressList>(),
+    get_contract: read<GetContractPayload, GetContractResp>(),
+  },
+  write: {
+    exec: write<ExecPayload, string>(),
+    grant_deploy_auth: write<AddressList, null>(),
+    revoke_deploy_auth: write<AddressList, null>(),
+    deploy: write<DeployPayload, DeployResp>(),
+    approve_contracts: write<AddressList, null>(),
+    revoke_contracts: write<AddressList, null>(),
+  },
 });

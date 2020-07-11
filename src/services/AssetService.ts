@@ -1,4 +1,4 @@
-import { createServiceBindingClass, read, write } from '@mutadev/service'
+import { createServiceBindingClass, read, write } from '@mutadev/service';
 import { Address, Hash, Hex, u64 } from '@mutadev/types';
 
 interface GetBalancePayload {
@@ -79,20 +79,20 @@ interface BurnAsset {
 }
 
 export const AssetService = createServiceBindingClass({
-    serviceName: 'asset',
-    read: {
-        get_asset: read<GetAssetPayload, Asset>(),
-        get_native_asset: read<null, Asset>(),
-        get_allowance: read<GetAllowancePayload, GetAllowanceResponse>(),
-        get_balance: read<GetBalancePayload, GetBalanceResponse>(),
-    },
-    write: {
-        create_asset: write<CreateAssetPayload, Asset>(),
-        transfer: write<TransferPayload, null>(),
-        approve: write<ApprovePayload, null>(),
-        transfer_from: write<TransferFromPayload, null>(),
-        change_admin: write<NewAdmin, null>(),
-        mint: write<MintAsset, null>(),
-        burn: write<BurnAsset, null>(),
-    },
+  serviceName: 'asset',
+  read: {
+    get_asset: read<GetAssetPayload, Asset>(),
+    get_native_asset: read<null, Asset>(),
+    get_allowance: read<GetAllowancePayload, GetAllowanceResponse>(),
+    get_balance: read<GetBalancePayload, GetBalanceResponse>(),
+  },
+  write: {
+    create_asset: write<CreateAssetPayload, Asset>(),
+    transfer: write<TransferPayload, null>(),
+    approve: write<ApprovePayload, null>(),
+    transfer_from: write<TransferFromPayload, null>(),
+    change_admin: write<NewAdmin, null>(),
+    mint: write<MintAsset, null>(),
+    burn: write<BurnAsset, null>(),
+  },
 });

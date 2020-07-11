@@ -1,5 +1,5 @@
-import { createServiceBindingClass, read, write } from '@mutadev/service'
-import { Address, Hex, Vec, SignedTransaction, u32, u64 } from '@mutadev/types';
+import { createServiceBindingClass, read, write } from '@mutadev/service';
+import { Address, Hex, u32, u64, Vec } from '@mutadev/types';
 
 interface SetAdminPayload {
   admin: Address;
@@ -70,21 +70,21 @@ interface AccumulateProfitPayload {
 }
 
 export const GovernanceService = createServiceBindingClass({
-    serviceName: 'governance',
-    read: {
-        get_admin_address: read<null, Address>(),
-        get_govern_info: read<null, GovernanceInfo>(),
-        get_tx_failure_fee: read<null, u64>(),
-        get_tx_floor_fee: read<null, u64>(),
-    },
-    write: {
-        set_admin: write<SetAdminPayload, null>(),
-        set_govern_info: write<SetGovernInfoPayload, null>(),
-        set_miner: write<MinerChargeConfig, null>(),
-        update_metadata: write<UpdateMetadataPayload, null>(),
-        update_validators: write<UpdateValidatorsPayload, null>(),
-        update_interval: write<UpdateIntervalPayload, null>(),
-        update_ratio: write<UpdateRatioPayload, null>(),
-        accumulate_profit: write<AccumulateProfitPayload, null>(),
-    },
+  serviceName: 'governance',
+  read: {
+    get_admin_address: read<null, Address>(),
+    get_govern_info: read<null, GovernanceInfo>(),
+    get_tx_failure_fee: read<null, u64>(),
+    get_tx_floor_fee: read<null, u64>(),
+  },
+  write: {
+    set_admin: write<SetAdminPayload, null>(),
+    set_govern_info: write<SetGovernInfoPayload, null>(),
+    set_miner: write<MinerChargeConfig, null>(),
+    update_metadata: write<UpdateMetadataPayload, null>(),
+    update_validators: write<UpdateValidatorsPayload, null>(),
+    update_interval: write<UpdateIntervalPayload, null>(),
+    update_ratio: write<UpdateRatioPayload, null>(),
+    accumulate_profit: write<AccumulateProfitPayload, null>(),
+  },
 });

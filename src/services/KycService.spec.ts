@@ -1,6 +1,5 @@
 import { Account } from '@mutadev/account';
 import { Client } from '@mutadev/client';
-import { BigNumber } from '@mutadev/shared';
 import { KycService } from './KycService';
 
 const account = Account.fromPrivateKey(
@@ -21,18 +20,18 @@ test('test KycService', async () => {
   expect(Number(res3.code)).toBe(0);
 
   const res4 = await service.write.update_user_tags({
-    org_name: "huobi",
-    user: "0xcff1002107105460941f797828f468667aa1a2db",
+    org_name: 'huobi',
+    user: '0xcff1002107105460941f797828f468667aa1a2db',
     tags: {
-      "name": [ "Alice" ],
-      "age": [ "10" ],
+      'name': ['Alice'],
+      'age': ['10'],
     },
   });
   expect(Number(res4.response.response.code)).toBe(0);
 
   const res5 = await service.read.get_user_tags({
-    org_name: "huobi",
-    user: "0xcff1002107105460941f797828f468667aa1a2db",
+    org_name: 'huobi',
+    user: '0xcff1002107105460941f797828f468667aa1a2db',
   });
   expect(Number(res3.code)).toBe(0);
 

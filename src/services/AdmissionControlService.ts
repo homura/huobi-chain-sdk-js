@@ -1,5 +1,5 @@
-import { createServiceBindingClass, read, write } from '@mutadev/service'
-import { Address, Vec, SignedTransaction } from '@mutadev/types';
+import { createServiceBindingClass, read, write } from '@mutadev/service';
+import { Address, SignedTransaction, Vec } from '@mutadev/types';
 
 interface NewAdmin {
   new_admin: Address;
@@ -14,15 +14,15 @@ interface StatusList {
 }
 
 export const AdmissionControlService = createServiceBindingClass({
-    serviceName: 'admission_control',
-    read: {
-        is_permitted: read<SignedTransaction, null>(),
-        is_valid: read<SignedTransaction, null>(),
-        status: read<AddressList, StatusList>(),
-    },
-    write: {
-        change_admin: write<NewAdmin, null>(),
-        forbid: write<AddressList, null>(),
-        permit: write<AddressList, null>(),
-    },
+  serviceName: 'admission_control',
+  read: {
+    is_permitted: read<SignedTransaction, null>(),
+    is_valid: read<SignedTransaction, null>(),
+    status: read<AddressList, StatusList>(),
+  },
+  write: {
+    change_admin: write<NewAdmin, null>(),
+    forbid: write<AddressList, null>(),
+    permit: write<AddressList, null>(),
+  },
 });

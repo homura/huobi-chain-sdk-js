@@ -1,6 +1,4 @@
-import { Account } from '@mutadev/account';
-import { Client } from '@mutadev/client';
-import { BigNumber } from '@mutadev/shared';
+import { Account, Client } from '@mutadev/muta-sdk';
 import { AdmissionControlService } from './AdmissionControlService';
 
 const account = Account.fromPrivateKey(
