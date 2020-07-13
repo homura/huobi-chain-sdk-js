@@ -8,6 +8,7 @@ interface GetBalancePayload {
 
 interface GetBalanceResponse {
   asset_id: string;
+  user: Address;
   balance: u64;
 }
 
@@ -15,6 +16,7 @@ interface TransferPayload {
   asset_id: Hash;
   to: Address;
   value: u64;
+  memo: string;
 }
 
 interface CreateAssetPayload {
@@ -22,6 +24,7 @@ interface CreateAssetPayload {
   symbol: string;
   supply: u64;
   precision: u64;
+  relayable: boolean;
 }
 
 interface Asset {
@@ -31,6 +34,7 @@ interface Asset {
   supply: u64;
   precision: u64;
   issuer: Address;
+  relayable: boolean;
 }
 
 interface GetAssetPayload {
@@ -44,6 +48,7 @@ interface TransferFromPayload {
   sender: Address;
   recipient: Address;
   value: u64;
+  memo: string;
 }
 
 interface GetAllowancePayload {
@@ -59,24 +64,26 @@ interface GetAllowanceResponse {
   value: u64;
 }
 
-interface NewAdmin {
+interface ChangeAdminPayload {
   addr: Address;
 }
 
-interface MintAsset {
-  asset_id: Hash,
-  to: Address,
-  amount: u64,
-  proof: Hex,
-  memo: string,
+interface MintAssetPayload {
+  asset_id: Hash;
+  to: Address;
+  amount: u64;
+  proof: Hex;
+  memo: string;
 }
 
-interface BurnAsset {
-  asset_id: Hash,
-  amount: u64,
-  proof: Hex,
-  memo: string,
+interface BurnAssetPayload {
+  asset_id: Hash;
+  amount: u64;
+  proof: Hex;
+  memo: string;
 }
+
+type RelayAssetPayload = BurnAssetPayload;
 
 export const AssetService = createServiceBindingClass({
   serviceName: 'asset',
@@ -91,8 +98,9 @@ export const AssetService = createServiceBindingClass({
     transfer: write<TransferPayload, null>(),
     approve: write<ApprovePayload, null>(),
     transfer_from: write<TransferFromPayload, null>(),
-    change_admin: write<NewAdmin, null>(),
-    mint: write<MintAsset, null>(),
-    burn: write<BurnAsset, null>(),
+    change_admin: write<ChangeAdminPayload, null>(),
+    mint: write<MintAssetPayload, null>(),
+    burn: write<BurnAssetPayload, null>(),
+    relay: write<RelayAssetPayload, null>(),
   },
 });

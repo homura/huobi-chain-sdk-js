@@ -19,6 +19,7 @@ test('test AssetService', async () => {
     supply,
     precision,
     symbol: Math.random().toString(),
+    relayable: false,
   });
 
   const asset = res.response.response.succeedData;
@@ -30,6 +31,7 @@ test('test AssetService', async () => {
     asset_id: asset.id,
     to: '0x0000000000000000000000000000000000000000',
     value: 123,
+    memo: '',
   });
 
   const balanceRes = await service.read.get_balance({

@@ -23,8 +23,8 @@ test('test KycService', async () => {
     org_name: 'huobi',
     user: '0xcff1002107105460941f797828f468667aa1a2db',
     tags: {
-      'name': ['Alice'],
-      'age': ['10'],
+      name: ['Alice'],
+      age: ['10'],
     },
   });
   expect(Number(res4.response.response.code)).toBe(0);
