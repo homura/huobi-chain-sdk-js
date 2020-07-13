@@ -58,7 +58,8 @@ export const KycService = createServiceBindingClass({
   },
   write: {
     change_org_approved: write<ChangeOrgApproved, null>(),
-    change_service_admin: write<ChangeOrgAdmin, null>(),
+    change_service_admin: write<Address, null>(),
+    change_org_admin: write<ChangeOrgAdmin, null>(),
     register_org: write<RegisterNewOrg, null>(),
     update_supported_tags: write<UpdateOrgSupportTags, null>(),
     update_user_tags: write<UpdateUserTags, null>(),
