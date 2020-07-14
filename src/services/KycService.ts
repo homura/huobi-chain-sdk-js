@@ -19,6 +19,10 @@ interface ChangeOrgAdmin {
   new_admin: Address;
 }
 
+interface ChangeServiceAdmin {
+  new_admin: Address;
+}
+
 interface RegisterNewOrg {
   name: string;
   description: string;
@@ -58,7 +62,7 @@ export const KycService = createServiceBindingClass({
   },
   write: {
     change_org_approved: write<ChangeOrgApproved, null>(),
-    change_service_admin: write<Address, null>(),
+    change_service_admin: write<ChangeServiceAdmin, null>(),
     change_org_admin: write<ChangeOrgAdmin, null>(),
     register_org: write<RegisterNewOrg, null>(),
     update_supported_tags: write<UpdateOrgSupportTags, null>(),
