@@ -1,7 +1,7 @@
 import { createServiceBindingClass, read, write } from '@mutadev/service';
 import { Address, Hash, Vec } from '@mutadev/types';
 
-enum InterpreterType {
+export enum InterpreterType {
   Binary = 1,
   Duktape = 2,
 }
