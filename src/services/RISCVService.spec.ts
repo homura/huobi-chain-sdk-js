@@ -18,26 +18,23 @@ const riscvService = new RISCVService(client, account);
 const assetService = new AssetService(client, account);
 
 async function deploy(code: string, initArgs: string) {
-  const res0 = await riscvService.write.deploy({
+  await riscvService.write.deploy({
     code,
     intp_type: InterpreterType.Binary,
     init_args: initArgs,
   });
-  console.log(res0);
 }
 
 async function check_deploy_auth(address: string) {
-  const res0 = await riscvService.read.check_deploy_auth({
+  await riscvService.read.check_deploy_auth({
     addresses: [ address ],
   });
-  console.log(res0);
 }
 
 async function grant_deploy_auth(address: string) {
-  const res0 = await riscvService.write.grant_deploy_auth({
+  await riscvService.write.grant_deploy_auth({
     addresses: [ address ],
   });
-  console.log(res0);
 }
 
 async function get_balance(assetId: string, user: string) {
