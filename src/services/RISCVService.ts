@@ -2,8 +2,7 @@ import { createServiceBindingClass, read, write } from '@mutadev/service';
 import { Address, Hash, Vec } from '@mutadev/types';
 
 export enum InterpreterType {
-  Binary = 1,
-  Duktape = 2,
+  Binary = 'Binary',
 }
 
 interface DeployPayload {
