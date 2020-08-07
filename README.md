@@ -1,8 +1,12 @@
-# huobi-chain-sdk
+# huobi-chain-sdk(Deprecated)
 
 Huobi Chain JavaScript SDK. The SDK is a binding for [Huobi Chain Services](https://github.com/HuobiGroup/huobi-chain/tree/master/services)  
 base on [muta-sdk](https://github.com/nervosnetwork/muta-sdk-js). It is recommended to code with an IDE that supports TypeScript such as VSCode or WebStorm,
 there will be corresponding code completion.
+
+## Deprecated
+
+Please move to https://github.com/HuobiGroup/huobi-chain-js-sdk
 
 ## Install
 
